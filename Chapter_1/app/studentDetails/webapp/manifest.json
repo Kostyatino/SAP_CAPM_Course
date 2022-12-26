@@ -1,0 +1,72 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+      "id": "student",
+      "type": "application",
+      "title": "Students Details",
+      "description": "studentDetails",
+      "dataSources": {
+        "exportSRV": { 
+          "uri": "/export-srv/",
+          "type": "OData",
+          "settings": {
+            "odataVersion": "4.0"
+          }
+        }
+      }
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.100.2",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },        
+      "models": {
+        "": {
+          "dataSource": "exportSRV",
+          "settings": {
+            "synchronizationMode": "None",
+            "operationMode": "Server",
+            "autoExpandSelect": false,
+            "earlyRequests": false,
+            "groupProperties": {
+              "default": {
+                "submit": "Auto"
+              }
+            }
+          }
+        }
+      },
+      "routing": {
+        "config":{
+            "async": true
+        },           
+        "routes": [ {
+          "pattern": ":?query:",
+          "name": "Student",
+          "target": "Student"
+        }
+        ],
+        "targets": {
+          "Student": {
+              "type": "Component",
+              "id": "Student",
+              "name": "sap.fe.templates.ListReport",
+              "options": {
+                "settings": {
+                  "entitySet": "StudentEntity"
+                }
+              }
+            }
+        }
+      }
+    }
+  }
