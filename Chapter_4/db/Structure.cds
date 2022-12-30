@@ -35,7 +35,7 @@ entity Students{
     first_name: String(40);
     last_name: String(40);
     date_sign_up: Date;
-    enrollment: Association to many Enrollments on enrollment.student = $self;
+    enrollment: Composition of many Enrollments on enrollment.student = $self;
 }
 
 annotate Students with @(

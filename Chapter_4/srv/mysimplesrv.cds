@@ -12,13 +12,14 @@ service mysrvdemo{
 
 /* @(_requires:'admin')*/
 service mysrvdemoapp {
-    
+    // Projection allows for custom service parsing-logic implementation
+    // Select is a direct SQL query
+
     entity GetStudent as select from lms1.Students;
+    entity GetEnrollment as select from lms1.Enrollments;
     //entity GetStudent as select from lms1.Students {*, count(ID) as count: Integer};
     entity GetCourse as projection on lms1.Courses;
     entity GetContent as projection on lms1.Contents;
-    entity GetEnrollment as projection on lms1.Enrollments;
-
 } 
 
-// annotate mysrvdemoapp.GetStudent with @odata.draft.enabled;
+annotate mysrvdemoapp.GetStudent with @odata.draft.enabled;
