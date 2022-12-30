@@ -1,6 +1,6 @@
 const cds = require("@sap/cds");
 const { Students } = cds.entities("myCompany.hr.lms1");
-//const { Enrollments } = cds.entities("myCompany.hr.lms1");
+const { changelog } = cds.entities("myCompany.hr.lms1");
 
 
 module.exports["mysrvdemo"] = srv => {
@@ -115,20 +115,62 @@ srv.after("READ", "GetStudent", data => {
   });
 };
 
-/*
+
 module.exports["mysrvdemoapp"] = srv => {
   //console.log(srv.entities);
-  srv.on("READ", "GetStudent", async (req, res) => {
+  srv.before("READ", "GetStudent", async (req, res) => {
     console.log(" --- Inside GetStudent --- ");
-
-    //const { SELECT } = cds.ql(req);
-    const aFilter = req.query.SELECT.where;
-
-    if (typeof aFilter !== "undefined")
-      return await SELECT.from(Students).where(aFilter);
-
-    return await SELECT.from(Students);
-
+  });
+  /*
+  srv.on("READ", "GetCourse", (req, res) => {
+    console.log("Inside GetCourse");
   });
 
-}; */
+  srv.on("READ", "GetEnrollment", (req, res) => {
+    console.log("Inside GetEnrollment");
+  });
+
+  srv.on("READ", "GetContent", (req, res) => {
+    console.log("Inside GetContent");
+  });
+
+  srv.on("CREATE", "GetStudent", (req, res) => {
+    console.log("Inside Create Student");
+  });
+
+  srv.on("EDIT", "GetStudent", (req, res) => {
+    console.log("Inside EDIT Student");
+  });
+
+  srv.on("EDIT", "GetEnrollment", (req, res) => {
+    console.log("Inside EDIT Enrollment");
+  });
+*/
+  srv.before("UPDATE", "GetStudent", (req, res) => {
+    console.log("*** Before UPDATE Student");
+  });
+
+  srv.after("UPDATE", "GetStudent", async (req, res) => {
+    console.log("*** After UPDATE Student");
+
+    let check = await INSERT.into(changelog).entries({ 'date_changed': new Date(), 'entity_name': "Students"});
+
+    console.log(check);
+  });
+
+/*
+  srv.on("CREATE", "GetEnrollment", (req, res) => {
+    console.log("Create New GetEnrollment");
+  });
+  srv.on("PUT", "GetEnrollment", (req, res) => {
+    console.log("PUT New GetEnrollment");
+  });
+  srv.on("UPDATE", "GetEnrollment", (req, res) => {
+    console.log("PUT New GetEnrollment");
+  });
+
+  srv.before("PATCH", "GetEnrollment", (req, res) => {
+    console.log("***********Inside before PATCH Enrollment");
+  });
+  */
+};

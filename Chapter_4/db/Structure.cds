@@ -3,7 +3,7 @@ using { Currency,managed,cuid } from '@sap/cds/common';
 
 
 entity Contents{
-    key ID: Integer;
+    key ID: Integer @title:'Content ID (Structure.cds)';
     content_url: String(1024);
     data_published: Date;
     content_type: String(20);
@@ -11,7 +11,7 @@ entity Contents{
 }
 
 entity Courses {
-    key ID: UUID @title:'Course ID';
+    key ID: UUID @title:'Course ID (Structure.cds)';
     course_name: String(100) @title:'Course Name';
     course_url: String(1024) @title:'Course URL';
     course_duration: Integer @title:'Course Duration';
@@ -65,3 +65,8 @@ annotate Students with @(
         }
 
 );
+
+entity changelog{
+  date_changed: Date;
+  entity_name: String(50);
+}
