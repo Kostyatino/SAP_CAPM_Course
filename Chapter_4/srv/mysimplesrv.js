@@ -2,6 +2,7 @@ const cds = require("@sap/cds");
 const { Students } = cds.entities("myCompany.hr.lms1");
 //const { Enrollments } = cds.entities("myCompany.hr.lms1");
 
+/*
 module.exports["mysrvdemo"] = srv => {
   srv.on("READ", "GetStudent", async (req, res) => {
     // const { SELECT } = cds.ql(req);
@@ -110,6 +111,7 @@ module.exports["mysrvdemo"] = srv => {
     return returnData;
   });
 };
+*/
 
 module.exports["mysrvdemoapp"] = srv => {
   //console.log(srv.entities);
