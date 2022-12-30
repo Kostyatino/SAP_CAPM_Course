@@ -1,4 +1,3 @@
-
 namespace myCompany.hr.lms;
 
 entity Students{
@@ -7,4 +6,3 @@ entity Students{
    last_name: String(20);
    date_sign_up : Date;
 }
-

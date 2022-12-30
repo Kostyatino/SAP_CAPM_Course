@@ -1,9 +1,9 @@
 {
-  "name": "Learn_SAP_CAPM_2",
+  "name": "Learn_SAP_CAPM_3",
   "version": "1.0.0",
   "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
+  "repository": "https://github.com/Kostyatino/SAP_CAPM_Course/tree/master/Chapter_3",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@sap/cds": ">=5",

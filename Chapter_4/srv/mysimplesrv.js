@@ -1,10 +1,10 @@
 const cds = require("@sap/cds");
-const { Students } = cds.entities("myCompany.hr.lms");
-const { Enrollments } = cds.entities("myCompany.hr.lms1");
+const { Students } = cds.entities("myCompany.hr.lms1");
+//const { Enrollments } = cds.entities("myCompany.hr.lms1");
 
 module.exports["mysrvdemo"] = srv => {
   srv.on("READ", "GetStudent", async (req, res) => {
-    const { SELECT } = cds.ql(req);
+    // const { SELECT } = cds.ql(req);
     const aFilter = req.query.SELECT.where;
 
     if (typeof aFilter !== "undefined")
@@ -112,9 +112,23 @@ module.exports["mysrvdemo"] = srv => {
 };
 
 module.exports["mysrvdemoapp"] = srv => {
-  console.log(srv.entities);
-  srv.on("READ", "GetStudent", (req, res) => {
-    console.log("Inside GetStudent");
+  //console.log(srv.entities);
+  srv.on("READ", "GetStudent", async (req, res) => {
+    console.log(" --- Inside GetStudent --- ");
+
+    //const { SELECT } = cds.ql(req);
+    const aFilter = req.query.SELECT.where;
+
+    if (typeof aFilter !== "undefined")
+      return await SELECT.from(Students).where(aFilter);
+
+    var studentArray = await SELECT.from(Students);
+
+    let query = SELECT.from(Students);
+    let results = await cds.run(query);
+
+    return results;
+
   });
 
   // draftPrepare.on => {

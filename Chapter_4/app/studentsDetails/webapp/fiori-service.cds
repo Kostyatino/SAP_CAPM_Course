@@ -1,10 +1,13 @@
 using mysrvdemoapp as serviceStudent from '../../../srv/mysimplesrv';
 
-
 annotate serviceStudent.GetStudent with @(
     UI:{
         SelectionFields: [email],
         LineItem: [
+            { 
+                Label: 'ID',
+                Value: ID
+            },
             {
                 Label: 'Email',
                 Value: email,
@@ -114,7 +117,7 @@ annotate serviceStudent.GetEnrollment with @(
             }
         },
          Identification: [
-         {Value:course_ID,label:'Course Name'}
+         {Value:course_ID, Label:'Course Name'}
          ],
         
         Facets: [
@@ -162,8 +165,8 @@ annotate serviceStudent.GetCourse with @(
 
 UI:{
      Identification: [
-         {Value:course_name,label:'Course Name'},
-          {Value: ID ,label:'Course ID'}
+         {Value:course_name, Label:'Course Name'},
+          {Value: ID , Label:'Course ID'}
          ],
 
         FieldGroup#CourseDetails: {
