@@ -30,8 +30,8 @@ entity Enrollments {
 
 
 entity Students{
-    key ID: UUID @title:'Student ID';
-    key email : String(50);
+    key ID: UUID @title:'Student ID (Structure.cds)';
+    email : String(50) ;
     first_name: String(40);
     last_name: String(40);
     date_sign_up: Date;
@@ -39,8 +39,7 @@ entity Students{
 }
 
 annotate Students with @(
-
-    UI: {
+    UI:{
         LineItem: [ {
                       Value: email,
                       Label:'Email'
@@ -56,7 +55,7 @@ annotate Students with @(
                 }],
           SelectionFields: [first_name, last_name],
           HeaderInfo: {
-              TypeName: 'Test',
+              TypeName: 'Test (Structure.cds)',
               TypeNamePlural: 'Tests',               
             Title: {Value: email},
             Description:{

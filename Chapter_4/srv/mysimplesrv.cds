@@ -13,7 +13,7 @@ service mysrvdemo{
 /* @(_requires:'admin')*/
 service mysrvdemoapp {
     
-    entity GetStudent as projection on lms1.Students;
+    entity GetStudent as select from lms1.Students;
     //entity GetStudent as select from lms1.Students {*, count(ID) as count: Integer};
     entity GetCourse as projection on lms1.Courses;
     entity GetContent as projection on lms1.Contents;

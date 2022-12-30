@@ -5,7 +5,7 @@ annotate serviceStudent.GetStudent with @(
         SelectionFields: [email],
         LineItem: [
             { 
-                Label: 'ID',
+                Label: 'ID (fiori-service)',
                 Value: ID
             },
             {
@@ -33,7 +33,7 @@ annotate serviceStudent.GetStudent with @(
                 },
             Description: {
                 Value: first_name,
-                Label: 'first Name'
+                Label: 'First Name (fiori-service)'
             }
         },
 
@@ -54,7 +54,7 @@ annotate serviceStudent.GetStudent with @(
 
             Data:[
                 {
-                    Label: 'First Name',
+                    Label: 'First Name (fiori-service)',
                     Value: first_name
                 },
                  {
@@ -93,7 +93,7 @@ annotate serviceStudent.GetEnrollment with @(
     
      LineItem: [
             {
-                Label: 'Enrollment ID',
+                Label: 'Enrollment ID (fiori-service)',
                 Value: ID,
             },
             {
@@ -173,7 +173,7 @@ UI:{
 
             Data:[
                 {
-                    Label: 'Course Name',
+                    Label: 'Course Name (fiori-service)',
                     Value: course_name
                 },
                  {
