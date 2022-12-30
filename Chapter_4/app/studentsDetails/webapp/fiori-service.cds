@@ -78,6 +78,7 @@ annotate serviceStudent.GetEnrollment with {
 	course @(
         Common: {
 			Text: course.course_name,
+            Label : 'Course Name',
 			FieldControl: #Mandatory
 		},
 		ValueList.entity:'GetCourse'
@@ -99,11 +100,12 @@ annotate serviceStudent.GetEnrollment with @(
             {
                 Label: 'Course ID',
                 Value: course_ID,
-            },
-            {
-                Label: 'Student ID',
-                Value: student.ID,
             }
+            //,
+            //{
+                //Label: 'Student ID',
+                //Value: student.ID,
+            //}
         ],
 
          HeaderInfo: {
@@ -116,17 +118,24 @@ annotate serviceStudent.GetEnrollment with @(
                 Value: course_ID
             }
         },
-         Identification: [
-         {Value:course_ID, Label:'Course Name'}
-         ],
+
+        Identification: [
+            {
+                Value:course_ID, Label:'Course Name'
+            }
+        ],
         
         Facets: [
-			{$Type: 'UI.ReferenceFacet', Label: '{i18n>Enrollments}', Target: '@UI.Identification'},
+			{
+                $Type: 'UI.ReferenceFacet',
+                Label: '{i18n>Enrollments}',
+                Target: '@UI.Identification'
+            },
             {
                 $Type: 'UI.ReferenceFacet',
-                Label: 'Course Details',
+                Label: 'Course Details (fiori-service)',
                 Target: 'course/@UI.FieldGroup#CourseDetails'
-            },
+            }
 		],
        
             //  {
@@ -165,35 +174,36 @@ annotate serviceStudent.GetCourse with @(
 
 UI:{
      Identification: [
-         {Value:course_name, Label:'Course Name'},
-          {Value: ID , Label:'Course ID'}
+            {Value:course_name, Label:'Course Name' },
+            {Value: ID,         Label:'Course ID'   }
          ],
 
-        FieldGroup#CourseDetails: {
+    FieldGroup#CourseDetails: {
 
-            Data:[
+        Data:[
+            {
+                Label: 'Course Name (fiori-service)',
+                Value: course_name
+
+            },
                 {
-                    Label: 'Course Name (fiori-service)',
-                    Value: course_name
-                },
-                 {
-                    Label: 'Course Duration in Hrs',
-                    Value: course_duration
-                },
-                {
-                    Label: 'Course Price in USD',
-                    Value: course_price
-                },
-                {
-                    Label: 'Course Url',
-                    Value: course_url
-                },
-                {
-                    Label: 'Currency',
-                    Value: currency_code
-                }
-            ]
-        },
+                Label: 'Course Duration in Hrs',
+                Value: course_duration
+            },
+            {
+                Label: 'Course Price in USD',
+                Value: course_price
+            },
+            {
+                Label: 'Course Url',
+                Value: course_url
+            },
+            {
+                Label: 'Currency',
+                Value: currency_code
+            }
+        ]
+    },
 
 });
 // {
