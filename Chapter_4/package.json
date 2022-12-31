@@ -8,9 +8,7 @@
     "@sap/cds": ">=5",
     "express": "^4",
     "hdb": "^0.17.1",
-    "jest": "^24.9.0",
-    "sqlite3": "^5.0.11",
-    "supertest": "^4.0.2"
+    "sqlite3": "^5.0.11"
   },
   "engines": {
     "node": "^16.15"
@@ -33,5 +31,9 @@
         ]
       }
     }
+  },
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "supertest": "^6.3.3"
   }
 }
